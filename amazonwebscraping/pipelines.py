@@ -1,9 +1,3 @@
-# Define your item pipelines here
-#
-# Don't forget to add your pipeline to the ITEM_PIPELINES setting
-# See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-
-
 # useful for handling different item types with a single interface
 from itemadapter import ItemAdapter
 import sqlite3
@@ -21,21 +15,21 @@ class AmazonwebscrapingPipeline:
         self.curr = self.con.cursor()
         
     def hydrate_table(self, item):
-        self.curr.execute(""" INSERT INTO products values (?,?,?,?,?)""",(
-        item['name'],
-        item['price'],
-        item['review'],
-        item['availability'],
-        item['image_link']
+        self.curr.execute(""" INSERT INTO products VALUES (?,?,?,?,?)""",(
+            item['product_name'][0],
+            item['product_price'][0],
+            item['product_review'][0],
+            item['product_type'][0],
+            item['product_imagelink'][0]
         ))
         self.con.commit()
 
     def create_table(self):
         self.curr.execute("""
-            create table if not exists products(
-            product_name text,
-            product_price text,
-            product_review text,
-            product_type text,
-            product_imagelink text
+            CREATE TABLE IF NOT EXISTS products(
+            product_name TEXT,
+            product_price TEXT,
+            product_review TEXT,
+            product_type TEXT,
+            product_imagelink TEXT
             )""")
