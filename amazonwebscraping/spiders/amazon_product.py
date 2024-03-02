@@ -10,9 +10,9 @@ class AmazonSpider(scrapy.Spider):
         items = AmazonwebscrapingItem()
 
         product_name = response.css('.a-color-base.a-text-normal ::text').extract()
-        product_price = response.css('.a-price .a-offscreen::text').extract()  # Update this selector
-        product_review = response.css('.a-icon-alt::text').extract()  # Update this selector
-        product_type = response.css('.a-color-state.a-text-bold::text').extract()  # Update this selector
+        product_price = response.css('.a-price .a-offscreen::text').extract()
+        product_review = response.css('.a-icon-alt::text').extract()
+        product_type = response.css('.a-color-state.a-text-bold::text').extract()
         product_imagelink = response.css('.s-image::attr(src)').extract()
 
         items['product_name'] = product_name
