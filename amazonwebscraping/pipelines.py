@@ -15,14 +15,16 @@ class AmazonwebscrapingPipeline:
         self.curr = self.con.cursor()
         
     def hydrate_table(self, item):
-        self.curr.execute(""" INSERT INTO products VALUES (?,?,?,?,?)""",(
-            item['product_name'][0],
-            item['product_price'][0],
-            item['product_review'][0],
-            item['product_type'][0],
-            item['product_imagelink'][0]
-        ))
-        self.con.commit()
+        if  item['product_name'][0]:
+            self.curr.execute(""" INSERT INTO products VALUES (?,?,?,?,?)""",(
+                item['product_name'][0],
+                item['product_price'][0],
+                item['product_review'][0],
+                item['product_type'][0],
+                item['product_imagelink'][0]
+            ))
+            self.con.commit()
+        return item
 
     def create_table(self):
         self.curr.execute("""
