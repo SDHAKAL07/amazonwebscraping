@@ -8,7 +8,7 @@ amazon_product spider searches Amazon and extracts each product's information. T
 * product availability
 
 #### Install Guides
-Clone this repository into your local machine and make sure you have python installed on it. Once repository has been cloned create a virtual environment and install all the required libraries  and dependencies present in the requirement.txt file. 
+Clone this repository into your local machine and make sure you have python installed on your pc. Once repository has been cloned create a virtual environment and install all the required libraries  and dependencies present in the requirement.txt file. 
 
 ### Execution
 Activate the virtual environment and execute it by running :
